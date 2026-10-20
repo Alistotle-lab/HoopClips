@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1420">
+  <meta name="description" content="Film your basketball game, find your best moments, and share your highlights with the community.">
+  <title>HoopClips — Film. Highlight. Share.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="HoopClips home"><span class="ball">◉</span><span>Hoop<span>Clips</span></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a><a href="#explore">Explore</a><a href="#upload">Upload</a><a href="#leaderboard">Leaderboard</a>
+    </nav>
+    <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search players, teams, tags…" aria-label="Search highlights"></label>
+    <div class="account-actions"><button class="text-btn" id="loginBtn">Log in</button><button class="btn btn-small" id="signupBtn">Sign up</button></div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shade"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="live-dot"></span> YOUR GAME. YOUR STORY.</p>
+        <h1>Film. Highlight.<br><em>Share.</em></h1>
+        <p class="hero-sub">Record your game and let HoopClips help find your best moments. Share your highlights, track your stats, and get discovered by the basketball community.</p>
+        <div class="hero-actions"><a class="btn" href="#upload">＋ Upload your video</a><a class="btn btn-ghost" href="#explore"><span class="play-mini">▶</span> Explore highlights</a></div>
+        <div class="hero-proof"><div class="avatar-stack"><span>🏀</span><span>🔥</span><span>⭐</span></div><span><strong>Made for hoopers</strong><br>From pickup runs to game day</span></div>
+      </div>
+      <aside class="feature-card" aria-label="Featured highlight statistics">
+        <div class="featured-media">
+          <img src="assets/highlight-featured.jpg" alt="Basketball player jumping for a shot">
+          <button class="play-button" data-play-sample aria-label="Play sample video">▶</button>
+          <span class="duration">0:42</span>
+        </div>
+        <div class="feature-info">
+          <div class="player-line"><span class="avatar">JC</span><div><strong>Jordan Cruz</strong><small>@jordancruz · #12 SG</small></div><span class="pill">FEATURED</span></div>
+          <h2>Game Highlights vs. Rivals</h2>
+          <div class="stats-grid">
+            <div><b>24</b><small>PTS</small></div><div><b>8</b><small>REB</small></div><div><b>6</b><small>AST</small></div><div><b>3</b><small>STL</small></div><div><b>2</b><small>BLK</small></div>
+          </div>
+          <div class="shooting"><span><small>FG · 2 POINTS</small><b>8/12 <i>67%</i></b></span><span><small>FG · 3 POINTS</small><b>4/8 <i>50%</i></b></span></div>
+        </div>
+      </aside>
+      <div class="hero-bottom"><span>↓</span> Scroll to catch the highlights</div>
+    </section>
+
+    <section class="benefits" aria-label="How HoopClips works">
+      <article><span class="benefit-icon">▣</span><div><h3>Film your game</h3><p>Upload a recording from your phone or camera.</p></div></article>
+      <article><span class="benefit-icon">✂</span><div><h3>Find the moments</h3><p>Review suggested highlight timestamps and make your cuts.</p></div></article>
+      <article><span class="benefit-icon">↗</span><div><h3>Share the run</h3><p>Post your best plays for the whole community.</p></div></article>
+      <article><span class="benefit-icon">♙</span><div><h3>Track your stats</h3><p>Showcase your game with a stats-ready thumbnail.</p></div></article>
+    </section>
+
+    <section class="upload-section section-wrap" id="upload">
+      <div class="section-heading">
+        <div><p class="eyebrow orange">YOUR NEXT HIGHLIGHT STARTS HERE</p><h2>Turn game film into <em>game-day moments.</em></h2><p class="muted">Choose a video to preview it and generate demo highlight markers.</p></div>
+        <span class="step-tag">01 / UPLOAD</span>
+      </div>
+      <div class="upload-layout">
+        <div class="upload-box" id="dropZone">
+          <input id="videoInput" type="file" accept="video/*" hidden>
+          <div class="upload-symbol">↑</div><h3>Drop your game video here</h3><p>or choose a file from your device</p>
+          <button class="btn" id="chooseVideo">Choose video</button><small>MP4, MOV, WebM · stays in this browser demo</small>
+        </div>
+        <div class="video-workspace">
+          <div class="video-frame" id="videoFrame">
+            <video id="userVideo" controls playsinline preload="metadata" poster="assets/highlight-featured.jpg"></video>
+            <div class="video-placeholder" id="videoPlaceholder"><span class="big-play">▶</span><strong>Your film preview</strong><small>Upload a video to get started</small></div>
+          </div>
+          <div class="video-controls"><div><strong id="videoName">No video selected</strong><small id="videoDuration">Your clip preview will appear here</small></div><button class="btn btn-small" id="analyzeBtn" disabled>✦ Find highlights</button></div>
+          <div id="analysisResult" class="analysis-result" aria-live="polite"><span class="result-icon">✦</span><div><strong>Highlight finder</strong><p>Upload a video to generate sample moments to review. Automated AI detection is a demo simulation in this static version.</p></div></div>
+          <div class="moments" id="moments"></div>
+        </div>
+      </div>
+      <p class="privacy-note">🔒 Your selected video is previewed locally and is not uploaded to a server by this demo.</p>
+    </section>
+
+    <section class="community-section" id="explore">
+      <div class="section-wrap">
+        <div class="section-heading explore-heading"><div><p class="eyebrow orange">THE COMMUNITY</p><h2>Fresh off the <em>court.</em></h2><p class="muted">Discover runs, rising players, and big-time buckets.</p></div><div class="feed-filters"><button class="filter active" data-filter="all">For you</button><button class="filter" data-filter="pickup">Pickup</button><button class="filter" data-filter="tournament">Tournament</button></div></div>
+        <div class="highlight-grid" id="highlightGrid">
+          <article class="highlight-card" data-category="tournament" data-search="jordan cruz game highlights rivals game tournament">
+            <div class="thumb"><img src="assets/highlight-1.jpg" alt="Player shooting in an indoor basketball court"><span class="thumb-duration">1:12</span><button class="thumb-play" data-play-sample aria-label="Play sample video">▶</button><span class="tag">#gameday</span></div>
+            <div class="card-body"><div class="card-user"><span class="avatar avatar-orange">JC</span><div><strong>Jordan Cruz</strong><small>2 hours ago · <span>@jordancruz</span></small></div><button class="follow-btn">+ Follow</button></div><h3>Game Highlights vs. Rivals</h3><p class="card-caption">Big shots, big stops. Whole team showed up. 🔥</p><div class="mini-stats"><span><b>24</b><small>PTS</small></span><span><b>8</b><small>REB</small></span><span><b>6</b><small>AST</small></span><span><b>3</b><small>STL</small></span><span><b>2</b><small>BLK</small></span></div><div class="shooting compact"><span><small>2PT FG</small><b>8/12 <i>67%</i></b></span><span><small>3PT FG</small><b>4/8 <i>50%</i></b></span></div><div class="card-actions"><button class="like-btn">♡ <span>128</span></button><button class="share-btn">↗ Share</button></div></div>
+          </article>
+          <article class="highlight-card" data-category="pickup" data-search="kyle thompson street ball pickup buckets">
+            <div class="thumb"><img src="assets/highlight-2.jpg" alt="Outdoor basketball pickup game"><span class="thumb-duration">0:58</span><button class="thumb-play" data-play-sample aria-label="Play sample video">▶</button><span class="tag">#pickup</span></div>
+            <div class="card-body"><div class="card-user"><span class="avatar avatar-blue">KT</span><div><strong>Kyle Thompson</strong><small>5 hours ago · <span>@kyle_23</span></small></div><button class="follow-btn">+ Follow</button></div><h3>Street Ball Highlights</h3><p class="card-caption">Sun's out, buckets in. 🏀</p><div class="mini-stats"><span><b>18</b><small>PTS</small></span><span><b>5</b><small>REB</small></span><span><b>4</b><small>AST</small></span><span><b>2</b><small>STL</small></span><span><b>1</b><small>BLK</small></span></div><div class="shooting compact"><span><small>2PT FG</small><b>7/10 <i>70%</i></b></span><span><small>3PT FG</small><b>1/4 <i>25%</i></b></span></div><div class="card-actions"><button class="like-btn">♡ <span>86</span></button><button class="share-btn">↗ Share</button></div></div>
+          </article>
+          <article class="highlight-card" data-category="tournament" data-search="mike ballin tournament highlights full game">
+            <div class="thumb"><img src="assets/highlight-3.jpg" alt="Indoor basketball tournament play"><span class="thumb-duration">1:23</span><button class="thumb-play" data-play-sample aria-label="Play sample video">▶</button><span class="tag">#tournament</span></div>
+            <div class="card-body"><div class="card-user"><span class="avatar avatar-purple">MB</span><div><strong>Mike Ballin</strong><small>1 day ago · <span>@mikeballin</span></small></div><button class="follow-btn">+ Follow</button></div><h3>Tournament Highlights</h3><p class="card-caption">Playoff mode activated. Every possession counts.</p><div class="mini-stats"><span><b>32</b><small>PTS</small></span><span><b>12</b><small>REB</small></span><span><b>5</b><small>AST</small></span><span><b>4</b><small>STL</small></span><span><b>3</b><small>BLK</small></span></div><div class="shooting compact"><span><small>2PT FG</small><b>14/20 <i>70%</i></b></span><span><small>3PT FG</small><b>4/10 <i>40%</i></b></span></div><div class="card-actions"><button class="like-btn">♡ <span>214</span></button><button class="share-btn">↗ Share</button></div></div>
+          </article>
+          <article class="highlight-card" data-category="pickup" data-search="jaycee good vibes first game pickup">
+            <div class="thumb"><img src="assets/highlight-4.jpg" alt="Outdoor basketball game at sunset"><span class="thumb-duration">0:47</span><button class="thumb-play" data-play-sample aria-label="Play sample video">▶</button><span class="tag">#firstgame</span></div>
+            <div class="card-body"><div class="card-user"><span class="avatar avatar-green">J</span><div><strong>Jaycee</strong><small>2 days ago · <span>@jaycee</span></small></div><button class="follow-btn">+ Follow</button></div><h3>Good Vibes, Good Game</h3><p class="card-caption">Just hooping with the crew. More to come!</p><div class="mini-stats"><span><b>16</b><small>PTS</small></span><span><b>7</b><small>REB</small></span><span><b>3</b><small>AST</small></span><span><b>2</b><small>STL</small></span><span><b>1</b><small>BLK</small></span></div><div class="shooting compact"><span><small>2PT FG</small><b>6/10 <i>60%</i></b></span><span><small>3PT FG</small><b>2/6 <i>33%</i></b></span></div><div class="card-actions"><button class="like-btn">♡ <span>43</span></button><button class="share-btn">↗ Share</button></div></div>
+          </article>
+        </div>
+        <div class="load-more-wrap"><button class="btn btn-ghost" id="loadMore">Load more highlights <span>↓</span></button></div>
+      </div>
+    </section>
+
+    <section class="leaderboard section-wrap" id="leaderboard">
+      <div class="section-heading"><div><p class="eyebrow orange">PLAYERS TO WATCH</p><h2>Put your name <em>on the board.</em></h2></div><span class="step-tag">COMMUNITY LEADERS</span></div>
+      <div class="leader-list"><div class="leader-row"><span class="rank">01</span><span class="avatar avatar-orange">MB</span><strong>Mike Ballin <small>@mikeballin</small></strong><span class="leader-stat">32 <small>PPG*</small></span><span class="leader-badge">🔥 Hot streak</span></div><div class="leader-row"><span class="rank">02</span><span class="avatar avatar-blue">JC</span><strong>Jordan Cruz <small>@jordancruz</small></strong><span class="leader-stat">24 <small>PPG*</small></span><span class="leader-badge">⭐ Featured</span></div><div class="leader-row"><span class="rank">03</span><span class="avatar avatar-purple">KT</span><strong>Kyle Thompson <small>@kyle_23</small></strong><span class="leader-stat">18 <small>PPG*</small></span><span class="leader-badge">🏀 Streetball</span></div></div>
+      <p class="fine-print">*Sample player stats for this demo, not verified league records.</p>
+    </section>
+
+    <section class="cta-band"><div><p class="eyebrow">YOUR NEXT PLAY IS THE ONE</p><h2>Every hooper has a highlight.</h2><p>Bring yours to the community.</p></div><a href="#upload" class="btn">Upload your first video ↗</a></section>
+  </main>
+  <footer><a class="brand" href="#"><span class="ball">◉</span><span>Hoop<span>Clips</span></span></a><p>More than a game. It's your story.</p><div><a href="#home">Home</a><a href="#explore">Explore</a><a href="#upload">Upload</a></div><small>© 2026 HoopClips · Demo experience</small></footer>
+
+  <dialog id="videoDialog" class="video-dialog"><button class="dialog-close" id="closeDialog" aria-label="Close video">×</button><div class="dialog-video"><video id="sampleVideo" controls playsinline poster="assets/highlight-featured.jpg"><source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" type="video/mp4"></video></div><div class="dialog-caption"><span class="eyebrow orange">SAMPLE VIDEO</span><h3>On-court action</h3><p>Sample media is streamed from an external host. If it doesn't load, try the upload preview with a video from your device.</p></div></dialog>
+  <dialog id="authDialog" class="auth-dialog"><button class="dialog-close" id="closeAuth" aria-label="Close">×</button><div class="auth-mark">🏀</div><h2 id="authTitle">Welcome to HoopClips</h2><p id="authCopy">Create a profile to start sharing your game.</p><form id="authForm"><label>Display name<input required placeholder="Your hoop name"></label><label>Email<input required type="email" placeholder="you@example.com"></label><button class="btn" type="submit" id="authSubmit">Create demo profile</button></form><small>This is a front-end demo. No account is created or stored.</small></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
